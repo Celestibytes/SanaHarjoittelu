@@ -78,4 +78,22 @@ public class Util {
 		return Long.MIN_VALUE;
 	}
 	
+	public static boolean arrayEqual(char[] a, char[] b, int aStart, int bStart, int length) {
+		for(int i=0;i<length;i++) {
+			if(a[aStart+i] != b[bStart+i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static int arrayEqualUntil(char[] a, char[] b, int aStart, int bStart, int length) {
+		for(int i=0;i<length;i++) {
+			if(a[aStart+i] != b[bStart+i]) {
+				return i-1;
+			}
+		}
+		return length-1;
+	}
+	
 }

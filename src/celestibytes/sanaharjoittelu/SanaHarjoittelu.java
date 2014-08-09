@@ -10,9 +10,10 @@ public class SanaHarjoittelu {
 		if(args.length >= 1 && args[0] == "DEBUG") {
 			DEBUG = true;
 		}
-		Word a = new Word(new String[]{"tst1","tst2","tst33"},new String[]{"ans1","ans2"}); // "Original"
-		Word b = new Word(new String[]{"ttt1","sst2","tst3"}); // "input"
-		boolean[][] diff = WordUtil.WordDiff(a, b, true);
+		
+		Word a = new Word(new String[]{"tietokone","tst2","tst33"},new String[]{"ans1","ans2"}); // "Original"
+		Word b = new Word(new String[]{"tieetoone","sst2","tst3"}); // "input"
+		byte[][] diff = WordUtil.WordDiff(a, b, true);
 		for(int i=0;i<diff.length;i++) {
 			System.out.println("["+i+"]:");
 			for(int i2=0;i2<diff[i].length;i2++) {

@@ -79,7 +79,7 @@ public class WordUtil {
 						if(toCheck[i2+toCheckOffset] == correct[i2+1 < correct.length ? i2+1 : i2]) {
 							arrEqUntil = Util.arrayEqualUntil(toCheck, correct, i2+toCheckOffset, i2+1, correct.length-(i2+1));
 							if(arrEqUntil >= 1 || i2+arrEqUntil >= iters2-1) {
-								ret[i][i2] = WordDiff.CHAR_MISSING;
+								ret[i][i2+toCheckOffset < longestWord && i2+toCheckOffset >= 0 ? i2+toCheckOffset : i2] = WordDiff.CHAR_MISSING;
 								toCheckOffset--; //!
 								
 								// Useless for loop?
@@ -94,15 +94,14 @@ public class WordUtil {
 						if(toCheck[i2+toCheckOffset+1 < toCheck.length ? i2+toCheckOffset+1 : i2+toCheckOffset] == correct[i2]) {
 							arrEqUntil = Util.arrayEqualUntil(toCheck, correct, i2+toCheckOffset+1, i2, correct.length-(i2));
 							if(arrEqUntil >= 1 || i2+arrEqUntil >= iters2-1) {
-								ret[i][i2] = WordDiff.CHAR_EXTRA; // TODO: use offset
+								ret[i][i2+toCheckOffset < longestWord && i2+toCheckOffset >= 0 ? i2+toCheckOffset : i2] = WordDiff.CHAR_EXTRA; // TODO: use offset
 								toCheckOffset++;
 								i2 = i2 + arrEqUntil+1;
 								System.out.println("nextCyc: " + i2);
 								continue;
 							}
 						}
-						
-						ret[i][i2] = WordDiff.CHAR_INCORRECT;
+						ret[i][i2+toCheckOffset < longestWord && i2+toCheckOffset >= 0 ? i2+toCheckOffset : i2] = WordDiff.CHAR_INCORRECT;
 					}
 				}
 			}

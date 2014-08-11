@@ -6,28 +6,31 @@ public class Base64 {
 	
 	public static String encode(String s) {
 		int buffer = 0x0;
-		int bufferIndex = 0;
+		int bufferIndex = 2;
+		int lsBytes = 0;
 		System.out.print("B64 Value: ");
+		
 		for(int i=0;i<s.length();i++) {
 			buffer |= (int)(s.charAt(i)) << 8*bufferIndex;
 			if(i == s.length()-1) {
-				// Add padding
+				lsBytes = 3-(s.length()%3);
+				lsBytes = lsBytes == 3 ? 0 : lsBytes; 
 			}
-			if(bufferIndex == 2) {
-				
-				for(int encInd = 3; encInd > -1; encInd--) {
+			if(bufferIndex == 0 || i == s.length()-1) {
+				for(int encInd = 3; encInd > -1+lsBytes; encInd--) {
 					System.out.print(BASE64_CHARACTERS[((buffer >> encInd*6) & 63)]);
 				}
-				
+				if(lsBytes != 0) {
+					for(int q = 0;q<lsBytes;q++) {
+						System.out.print(BASE64_PADDING);
+					}
+				}
 				buffer = 0;
-				bufferIndex=0;
+				bufferIndex=3;
 			}
-			
-			bufferIndex++;
+			bufferIndex--;
 		}
 		System.out.println();
-		System.out.println("BufferHex: " + Integer.toHexString(buffer));
-		System.out.println("BufferBin: " + Integer.toBinaryString(buffer));
 		return null;
 	}
 	

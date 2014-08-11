@@ -12,7 +12,7 @@ public class SanaHarjoittelu {
 			DEBUG = true;
 		}
 		
-		Base64.encode("g3Sn9Dm5A");
+		Base64.encode("---");
 		
 //		Word a = new Word(new String[]{"tietokone","tst2","tst33"},new String[]{"ans1","ans2"}); // "Original"
 //		Word b = new Word(new String[]{"tieetoone","sst2","tst3"}); // "input"
@@ -22,9 +22,7 @@ public class SanaHarjoittelu {
 //			for(int i2=0;i2<diff[i].length;i2++) {
 //				System.out.println("--> " + diff[i][i2]);
 //			}
-//		}
-		
-		
+//		} 110000 100000
 	}
 	
 	
